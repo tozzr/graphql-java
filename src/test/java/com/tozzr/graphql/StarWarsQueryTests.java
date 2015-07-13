@@ -1,9 +1,8 @@
 package com.tozzr.graphql;
 
+import static com.tozzr.graphql.GraphQL.graphql;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
-
-import java.util.ArrayList;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,25 +22,19 @@ public class StarWarsQueryTests {
 		
 		@Test
 		public void correctlyIdentifyR2D2AsTheHeroOfTheStarWarsSaga() {
-			String query =
-				"query HeroNameQuery {" +
-				"	hero {" + 
-				" 		name" +
-				"	}" + 
-			    "}";
+			String query =	"query HeroNameQuery {" +
+							"	hero {" + 
+							" 		name" +
+							"	}" + 
+						    "}";
 			GraphQLResult expected = new GraphQLResult(
 				new FieldMap(
 					"hero", new FieldMap(
 						"name", "R2-D2"
 					)
-				),
-				new ArrayList<GraphQLFormattedError>()
+				)
 			);
 			testQuery(query, expected);
 		}
-	}
-	
-	private GraphQLResult graphql(GraphQLSchema schema, String query) {
-		return new GraphQLResult();
 	}
 }
