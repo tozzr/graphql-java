@@ -12,24 +12,27 @@ import de.bechte.junit.runners.context.HierarchicalContextRunner;
 @RunWith(HierarchicalContextRunner.class)
 public class StarWarsQueryTests {
 
-	GraphQLSchema starWarsSchema = new StarWarsSchema();
+  GraphQLSchema starWarsSchema = new StarWarsSchema();
 
-	private void testQuery(String query, GraphQLResult expected) {
-		assertThat(graphql(starWarsSchema, query), equalTo(expected));
-	}
+  private void testQuery(String query, GraphQLResult expected) {
+    assertThat(graphql(starWarsSchema, query), equalTo(expected));
+  }
 
-	public class BasicQueries {
+  public class BasicQueries {
 
-		@Test
-		public void correctlyIdentifyR2D2AsTheHeroOfTheStarWarsSaga() {
-			String query = "query HeroNameQuery {" 
-		               + "  hero {" 
-			             + "    name"
-					         + "  }" 
-			             + "}";
-			GraphQLResult expected = new GraphQLResult(new FieldMap("hero",
-					new FieldMap("name", "R2-D2")));
-			testQuery(query, expected);
-		}
-	}
+    @Test
+    public void correctlyIdentifyR2D2AsTheHeroOfTheStarWarsSaga() {
+      String query = "query HeroNameQuery {" 
+                   + "  hero {" 
+                   + "    name" 
+                   + "  }"
+                   + "}";
+      GraphQLResult expected = new GraphQLResult(
+        new FieldMap("hero",
+          new FieldMap("name", "R2-D2")
+        )
+      );
+      testQuery(query, expected);
+    }
+  }
 }
