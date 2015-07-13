@@ -5,13 +5,13 @@ import java.util.List;
 
 public class GraphQLValidationResult {
 
-	private boolean valid = true;
+  private boolean valid = true;
 
-	public boolean isValid() {
-		return valid;
-	}
+  public boolean isValid() {
+    return valid;
+  }
 
-	public List<GraphQLFormattedError> getErrors() {
-		return new ArrayList<GraphQLFormattedError>();
-	}
+  public List<GraphQLFormattedError> getErrors() {
+    return new ArrayList<GraphQLFormattedError>();
+  }
 }
