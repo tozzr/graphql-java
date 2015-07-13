@@ -1,23 +1,24 @@
 package com.tozzr.graphql;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class GraphQLResult {
 
-	private FieldTree data;
+	private FieldMap data;
 	private List<GraphQLFormattedError> errors;
 	
-	public FieldTree getData() {
+	public GraphQLResult() {}
+	
+	public GraphQLResult(FieldMap data, List<GraphQLFormattedError> errors) {
+		this.data = data;
+		this.errors = errors;
+	}
+	
+	public FieldMap getData() {
 		return data;
 	}
 
 	public List<GraphQLFormattedError> getErrors() {
 		return errors;
-	}
-
-	private class FieldTree extends HashMap<String, Object> {
-		
-		private static final long serialVersionUID = 1L;
 	}
 }
